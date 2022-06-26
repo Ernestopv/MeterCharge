@@ -1,0 +1,30 @@
+name: MeterCharge CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: [windows-latest]
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v2
+      
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+      
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+      
+    - name: Restore NuGet packages from solution
+      run: nuget restore src/MeterCharge/MeterCharge.sln
+      
+    - name: Build the Solution
+      run: msbuild src/MeterCharge/MeterCharge.sln /p:Configuration=Release
