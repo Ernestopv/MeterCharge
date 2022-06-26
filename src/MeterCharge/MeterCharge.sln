@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterCharge", "MeterCharge.csproj", "{DBBB23DF-CCAD-412D-935D-0C6B23B9D67D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterCharge.Models", "..\MeterCharge.Models\MeterCharge.Models.csproj", "{5E65599F-C8BA-4F87-ACE0-E8E55D87F9A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterCharge.DataAccess", "..\MeterCharge.DataAccess\MeterCharge.DataAccess.csproj", "{885D522B-95F4-480E-902E-FAD08CE7718C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterCharge.Infrastructure", "..\MeterCharge.Infrastructure\MeterCharge.Infrastructure.csproj", "{DEF367E3-9A18-4A45-A87B-A8B5BAE2E07D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterCharge.Schema", "..\MeterCharge.Schema\MeterCharge.Schema.csproj", "{2DDEEFDD-B0FA-41BF-ABF0-02E213940366}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterCharge.Tests", "..\MeterCharge.Tests\MeterCharge.Tests.csproj", "{52FA6050-2F1D-47B2-87CB-07EAD08C06A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterCharge.DataAccess.Tests", "..\MeterCharge.DataAccess.Tests\MeterCharge.DataAccess.Tests.csproj", "{C87496B3-4025-414A-8DBC-B6AC8B2C681B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBBB23DF-CCAD-412D-935D-0C6B23B9D67D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBBB23DF-CCAD-412D-935D-0C6B23B9D67D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBBB23DF-CCAD-412D-935D-0C6B23B9D67D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBBB23DF-CCAD-412D-935D-0C6B23B9D67D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E65599F-C8BA-4F87-ACE0-E8E55D87F9A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E65599F-C8BA-4F87-ACE0-E8E55D87F9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E65599F-C8BA-4F87-ACE0-E8E55D87F9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E65599F-C8BA-4F87-ACE0-E8E55D87F9A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{885D522B-95F4-480E-902E-FAD08CE7718C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{885D522B-95F4-480E-902E-FAD08CE7718C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{885D522B-95F4-480E-902E-FAD08CE7718C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{885D522B-95F4-480E-902E-FAD08CE7718C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF367E3-9A18-4A45-A87B-A8B5BAE2E07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF367E3-9A18-4A45-A87B-A8B5BAE2E07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF367E3-9A18-4A45-A87B-A8B5BAE2E07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF367E3-9A18-4A45-A87B-A8B5BAE2E07D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DDEEFDD-B0FA-41BF-ABF0-02E213940366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DDEEFDD-B0FA-41BF-ABF0-02E213940366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DDEEFDD-B0FA-41BF-ABF0-02E213940366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DDEEFDD-B0FA-41BF-ABF0-02E213940366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52FA6050-2F1D-47B2-87CB-07EAD08C06A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52FA6050-2F1D-47B2-87CB-07EAD08C06A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52FA6050-2F1D-47B2-87CB-07EAD08C06A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52FA6050-2F1D-47B2-87CB-07EAD08C06A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C87496B3-4025-414A-8DBC-B6AC8B2C681B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C87496B3-4025-414A-8DBC-B6AC8B2C681B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C87496B3-4025-414A-8DBC-B6AC8B2C681B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C87496B3-4025-414A-8DBC-B6AC8B2C681B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CBB55AD-D42D-446E-B917-7A29375E2DA3}
+	EndGlobalSection
+EndGlobal
