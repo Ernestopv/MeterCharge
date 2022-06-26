@@ -28,3 +28,10 @@ jobs:
       
     - name: Build the Solution
       run: msbuild src/MeterCharge/MeterCharge.sln /p:Configuration=Release
+      
+    - name: run unit tests 
+    
+      run: | 
+          dotnet test src\MeterCharge.Tests\bin\Release\MeterCharge.Tests.dll
+          dotnet test src\MeterCharge.DataAccess.Tests\bin\Release\MeterCharge.DataAccess.Tests.dll
+      
