@@ -45,8 +45,8 @@ but the whole project has also split into libraries with the following design:
 
 ![image](https://user-images.githubusercontent.com/24325283/175838336-8d0e3e37-9094-43a1-9b2d-09a2cf527a66.png)
 
-The file persistence mechanism as been decoupled with the implementation of the factory pattern, now there is felixibility in picking another way 
-of handling data, by setting enableDb to true;
+The file persistence mechanism as been decoupled with the implementation of the factory pattern, now there is flexibility in picking another way 
+of handling data, by setting enableDb to true from app.config;
 
 ![image](https://user-images.githubusercontent.com/24325283/175839174-01658eec-9bda-4507-9bf0-05fb3e2e5089.png)
 
@@ -76,10 +76,18 @@ the same applies to water("MeterType.Water") and heating("MeterType.Heating").
  ![image](https://user-images.githubusercontent.com/24325283/175839829-74987618-c5a1-43a5-8190-d85c8de3294c.png)
 
  
+All configurations like connectionString, enableDb and keyValues for the factory design are being handled on app.Config 
+from the core Project (MeterCharge).
+
+![image](https://user-images.githubusercontent.com/24325283/175841056-87816472-2ce6-46cc-acca-a54cb7ee7c94.png)
 
 
 ##### ** Bonuses
- <sub>- persistence mechanism DB creation using entity framework ,- Github actions implemented  see workflow : https://github.com/Ernestopv/MeterCharge/actions
+ <sub>- Added persistence mechanism DB using entity framework ,- Github actions implemented  see workflow : https://github.com/Ernestopv/MeterCharge/actions
+
+
+ <sub>.Net Framework 4.7.2 </sub>
+  
 
 
 
