@@ -2,12 +2,11 @@
 // Copyright (c) Kamstrup. All rights reserved.
 // </copyright>
 
-using MeterCharge.Models.Enums;
-
 namespace MeterCharge.Implementations
 {
     using Interfaces;
     using Models;
+    using Models.Enums;
 
     /// <summary>
     /// Handles Water reading

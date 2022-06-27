@@ -20,11 +20,19 @@ namespace MeterCharge.DataAccess.Implementations
 
         #endregion
 
+        #region Public constructors
+
+        /// <summary>
+        ///  Initialises a new instance of the <see cref="TextFile"/> class.
+        /// </summary>
+        /// <param name="fileHandler">file handler</param>
         public TextFile(IFileHandler fileHandler)
         {
             _fileHandler = fileHandler;
 
         }
+
+        #endregion
 
         #region Public Methods
 
@@ -50,7 +58,7 @@ namespace MeterCharge.DataAccess.Implementations
             var meterName = "Meter-" + meter.Id;
             var filename = meterName + ".log";
 
-            _fileHandler.CreateColumnsOnFileText(filename);
+            _fileHandler.CreateColumnsOnTextFile(filename);
 
             return meterName;
         }

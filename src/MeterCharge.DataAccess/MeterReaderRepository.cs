@@ -2,14 +2,23 @@
 // Copyright (c) Kamstrup. All rights reserved.
 // </copyright>
 
-using MeterCharge.DataAccess.Interfaces;
-using MeterCharge.Schema.Models;
-
 namespace MeterCharge.DataAccess
 {
-    public class MeterReaderRepository: IMeterReaderRepository
+    using Interfaces;
+    using Schema.Models;
+
+    /// <summary>
+    /// Th meter reader repository
+    /// </summary>
+    public class MeterReaderRepository : IMeterReaderRepository
     {
 
+        #region public methods
+
+        /// <summary>
+        /// Save meter read to db
+        /// </summary>
+        /// <param name="meterReaderEntity">the meter read</param>
         public void SaveMeterRead(MeterReaderDto meterReaderEntity)
         {
             using (var context = new MeterReaderContext())
@@ -18,6 +27,8 @@ namespace MeterCharge.DataAccess
                 context.SaveChanges();
             }
         }
+
+        #endregion
 
     }
 }

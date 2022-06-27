@@ -2,14 +2,12 @@
 // Copyright (c) Kamstrup. All rights reserved.
 // </copyright>
 
-using MeterCharge.Factories.Interfaces;
-using MeterCharge.Models.Enums;
-
 namespace MeterCharge.Implementations
 {
-    using System;
     using Interfaces;
     using Models;
+    using Models.Enums;
+    using System;
 
     /// <summary>
     /// Handles electricity reading
@@ -35,8 +33,8 @@ namespace MeterCharge.Implementations
         /// <param name="dateTime">The date time</param>
         public Electricity(DateTime dateTime)
         {
-            
-            _dateTime =  dateTime;
+
+            _dateTime = dateTime;
         }
 
         #endregion
@@ -69,6 +67,6 @@ namespace MeterCharge.Implementations
         #endregion
 
 
-   
+
     }
 }

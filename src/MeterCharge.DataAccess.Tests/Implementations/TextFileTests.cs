@@ -63,7 +63,7 @@ namespace MeterCharge.DataAccess.Tests.Implementations
             };
 
             _fileHandler.CreateFileIfExists();
-            _fileHandler.CreateColumnsOnFileText(fileName);
+            _fileHandler.CreateColumnsOnTextFile(fileName);
 
             //Act
             var result = _sut.SetMeterName(meter);

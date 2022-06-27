@@ -13,6 +13,8 @@ namespace MeterCharge.Models
     /// </summary>
     public class Meter
     {
+        #region public fields
+
         /// <summary>
         /// Gets or sets Id
         /// </summary>
@@ -27,5 +29,7 @@ namespace MeterCharge.Models
         /// Gets or sets Readings 
         /// </summary>
         public IEnumerable<int> Readings { get; set; }
+
+        #endregion
     }
 }

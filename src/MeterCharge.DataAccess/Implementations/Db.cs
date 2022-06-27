@@ -2,19 +2,43 @@
 // Copyright (c) Kamstrup. All rights reserved.
 // </copyright>
 
+using MeterCharge.Schema.Models;
+
 namespace MeterCharge.DataAccess.Implementations
 {
     using System;
     using Interfaces;
     using Models;
+
+    /// <summary>
+    /// Handles data to db
+    /// </summary>
     public class Db : IData
     {
+        #region Private fields
+
+        /// <summary>
+        /// the db respository
+        /// </summary>
         private readonly  IMeterReaderRepository _repository;
+
+        #endregion
+
+        #region Public constructors
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="Db"/> class.
+        /// </summary>
+        /// <param name="repository"></param>
         public Db(IMeterReaderRepository repository)
         {
             _repository = repository;
             
         }
+
+        #endregion
+
+        #region Public methods
 
         /// <summary>
         /// Save consumption
@@ -22,7 +46,7 @@ namespace MeterCharge.DataAccess.Implementations
         /// <param name="result">The consumption result (cost, charge, consumption)</param>
         public void SaveConsumption(MeterReader result)
         {
-            var meterReaderEntity = new Schema.Models.MeterReaderDto()
+            var meterReaderEntity = new MeterReaderDto()
             {
                 Charge = result.Charge,
                 Consumption = result.Consumption,
@@ -32,7 +56,7 @@ namespace MeterCharge.DataAccess.Implementations
                 Timestamp = DateTime.UtcNow
             };
 
-         _repository.SaveMeterRead(meterReaderEntity);
+            _repository.SaveMeterRead(meterReaderEntity);
 
         }
 
@@ -47,5 +71,7 @@ namespace MeterCharge.DataAccess.Implementations
 
             return "Meter-" + meter.Id;
         }
+
+        #endregion
     }
 }

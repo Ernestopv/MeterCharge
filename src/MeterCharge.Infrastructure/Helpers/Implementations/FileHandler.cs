@@ -2,21 +2,33 @@
 // Copyright (c) Kamstrup. All rights reserved.
 // </copyright>
 
-using System;
-using System.IO;
-using System.Text;
-using MeterCharge.Infrastructure.Helpers.Interfaces;
-using MeterCharge.Models;
-
 namespace MeterCharge.Infrastructure.Helpers.Implementations
 {
+    using System;
+    using System.IO;
+    using System.Text;
+    using Interfaces;
+    using Models;
+
+    /// <summary>
+    /// Handles file to a text file
+    /// </summary>
     public class FileHandler : IFileHandler
     {
+        #region Private fields
+
         /// <summary>
         /// The writer text
         /// </summary>
         private static StreamWriter _writer;
 
+        #endregion
+
+        #region Public methods
+
+        /// <summary>
+        /// Create file if exists
+        /// </summary>
         public void CreateFileIfExists()
         {
             if (!Directory.Exists(@"C:\MeterDb\"))
@@ -25,7 +37,11 @@ namespace MeterCharge.Infrastructure.Helpers.Implementations
             }
         }
 
-        public void CreateColumnsOnFileText(string filename)
+        /// <summary>
+        /// Create columns on text file
+        /// </summary>
+        /// <param name="filename"></param>
+        public void CreateColumnsOnTextFile(string filename)
         {
             _writer = File.AppendText(@"C:\MeterDb\" + filename);
             _writer.Write("Timestamp".PadRight(20, ' ') + "\t" + "Meter Type".PadRight(15, ' ') + "\t" +
@@ -35,6 +51,10 @@ namespace MeterCharge.Infrastructure.Helpers.Implementations
 
         }
 
+        /// <summary>
+        /// Save data from meter reader
+        /// </summary>
+        /// <param name="result">the meter reader result</param>
         public void WriteMeterReaderDetails(MeterReader result)
         {
             var sb = new StringBuilder();
@@ -52,5 +72,7 @@ namespace MeterCharge.Infrastructure.Helpers.Implementations
 
             _writer.Write(sb.ToString());
         }
+
+        #endregion
     }
 }
