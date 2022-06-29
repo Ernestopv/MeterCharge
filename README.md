@@ -72,7 +72,7 @@ the same applies to water("MeterType.Water") and heating("MeterType.Heating").
  The core code  that perform the cost calculations was written using TDD on the following project library:
  - MeterCharge.Tests,  a few dependecies were mocked using the nuget library NSubstitute
  
- ![image](https://user-images.githubusercontent.com/24325283/175839829-74987618-c5a1-43a5-8190-d85c8de3294c.png)
+![image](https://user-images.githubusercontent.com/24325283/176563983-f9cf2901-a604-4721-80c3-517f89395630.png)
 
  
 The configuration like connectionString, is being handled on app.Config 
