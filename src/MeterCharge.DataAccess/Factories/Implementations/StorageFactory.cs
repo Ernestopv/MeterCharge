@@ -4,12 +4,11 @@
 
 namespace MeterCharge.DataAccess.Factories.Implementations
 {
-    using System;
     using DataAccess.Interfaces;
     using Infrastructure.Helpers.Implementations;
     using Infrastructure.Settings;
     using Interfaces;
-    using Models.Enums;
+    using MeterCharge.DataAccess.Implementations;
 
     /// <summary>
     /// Handles the storage type , (TextFile or Db)
@@ -20,9 +19,9 @@ namespace MeterCharge.DataAccess.Factories.Implementations
         #region Private fields
 
         /// <summary>
-        /// The app config
+        /// Verifies if the db is enabled from app config
         /// </summary>
-        private readonly IAppConfig _appConfig;
+        private readonly bool _isDbEnabled;
 
         #endregion
 
@@ -34,7 +33,8 @@ namespace MeterCharge.DataAccess.Factories.Implementations
         /// <param name="appConfig"></param>
         public StorageFactory(IAppConfig appConfig)
         {
-            _appConfig = appConfig;
+  
+            _isDbEnabled = appConfig.Get<bool>("EnableDb");
         }
 
         #endregion
@@ -48,80 +48,18 @@ namespace MeterCharge.DataAccess.Factories.Implementations
         /// <returns>Storage instance</returns>
         public IData GetStorageType()
         {
-            var isDbEnabled = _appConfig.Get<bool>("EnableDb");
-
-            return isDbEnabled ? GetDbInstance() : GetTextFileInstance();
-        }
-
-        #endregion
-
-        #region Private methods
-
-        /// <summary>
-        /// Get text file instance (store to text file)
-        /// </summary>
-        /// <returns>Text file instance</returns>
-        private IData GetTextFileInstance()
-        {
-            var assemblyName = _appConfig.Get<string>(StorageType.TextFile.ToString());
-            var textFileInstance = GetInstance<IData>(assemblyName);
-            return textFileInstance;
-        }
-
-        /// <summary>
-        /// Get Db instance (store to db)
-        /// </summary>
-        /// <returns>Db instance</returns>
-        private IData GetDbInstance()
-        {
-            var assemblyName = _appConfig.Get<string>(StorageType.Db.ToString());
-            var dbInstance = GetInstance<IData>(assemblyName);
-            return dbInstance;
-        }
-
-        /// <summary>
-        /// Get the instance 
-        /// </summary>
-        /// <typeparam name="T">class</typeparam>
-        /// <param name="assemblyName">the class name</param>
-        /// <returns>The created instance</returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        private T GetInstance<T>(string assemblyName) where T : class
-        {
-            if (string.IsNullOrWhiteSpace(assemblyName))
+            if (_isDbEnabled)
             {
-                throw new ArgumentNullException(nameof(assemblyName));
-            }
-            var objectType = Type.GetType(assemblyName);
-
-            return ValidateInstance<T>(objectType);
-        }
-
-        /// <summary>
-        /// Validate instance 
-        /// </summary>
-        /// <typeparam name="T"> Class</typeparam>
-        /// <param name="objecType">object type</param>
-        /// <returns>The created instance validated </returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        private T ValidateInstance<T>(Type objecType) where T : class
-        {
-            if (objecType == null)
-            {
-                throw new ArgumentNullException(nameof(objecType));
-            }
-
-            if (objecType.Name == StorageType.Db.ToString())
-            {
-                var meterReaderRepository = new MeterReaderRepository();
-                return Activator.CreateInstance(objecType, meterReaderRepository) as T;
+                var repository = new MeterReaderRepository();
+                return new Db(repository);
             }
 
             var fileHandler = new FileHandler();
-            return Activator.CreateInstance(objecType, fileHandler) as T;
-
+            return new TextFile(fileHandler);
         }
 
         #endregion
+
+
     }
 }

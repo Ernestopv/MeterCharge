@@ -4,10 +4,6 @@
 
 namespace MeterCharge
 {
-    using System;
-    using System.Collections.Generic;
-    using Models;
-    using Models.Enums;
     using DataAccess;
     using DataAccess.Factories.Implementations;
     using DataAccess.Factories.Interfaces;
@@ -16,6 +12,10 @@ namespace MeterCharge
     using Factories.Interfaces;
     using Infrastructure.Settings;
     using Microsoft.Practices.Unity;
+    using Models;
+    using Models.Enums;
+    using System;
+    using System.Collections.Generic;
 
     class Program
     {
@@ -23,15 +23,19 @@ namespace MeterCharge
         {
             //The lightweight extensible dependency injection container
             var container = new UnityContainer();
+         
+         
+            var appConfig = new AppConfig();
+            container.RegisterInstance<IAppConfig>(appConfig);
             container.RegisterType<IMeterReaderFactory, MeterReaderFactory>();
-            container.RegisterType<IAppConfig, AppConfig>();
             container.RegisterType<IStorageFactory, StorageFactory>();
             container.RegisterType<IMeterReaderRepository, MeterReaderRepository>();
+
             container.Resolve<AppConfig>();
             container.Resolve<MeterReaderRepository>();
             var meterReaderFactory = container.Resolve<MeterReaderFactory>();
-            var storageFactory =  container.Resolve<StorageFactory>();
-          
+            var storageFactory = container.Resolve<StorageFactory>();
+
             //Meter readings
             var m1 = new Meter { Id = Guid.NewGuid().ToString(), MeterType = MeterType.Electricity, Readings = new List<int> { 97, 50 } };
             var m2 = new Meter { Id = Guid.NewGuid().ToString(), MeterType = MeterType.Heating, Readings = new List<int> { 55, 87 } };
@@ -40,7 +44,7 @@ namespace MeterCharge
             var list1 = new List<Meter> { m1, m2, m3 };
 
             // Calculate
-            new MeterChargeSaver(meterReaderFactory,storageFactory).CalculateChargeForMeterReadingsAndSave(list1);
+            new MeterChargeSaver(meterReaderFactory, storageFactory).CalculateChargeForMeterReadingsAndSave(list1);
 
         }
     }

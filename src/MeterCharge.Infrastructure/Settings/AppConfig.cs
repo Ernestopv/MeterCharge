@@ -11,7 +11,7 @@ namespace MeterCharge.Infrastructure.Settings
     /// <summary>
     /// Gets the app configuration
     /// </summary>
-    public  class AppConfig: IAppConfig
+    public class AppConfig : IAppConfig
     {
         #region Public methods
 
@@ -22,7 +22,7 @@ namespace MeterCharge.Infrastructure.Settings
         /// <param name="key">Key</param>
         /// <returns>value key</returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public  T Get<T>(string key)
+        public T Get<T>(string key)
         {
             var appSetting = ConfigurationManager.AppSettings[key];
             if (string.IsNullOrWhiteSpace(appSetting))

@@ -4,11 +4,11 @@
 
 namespace MeterCharge
 {
-    using System.Collections.Generic;
     using DataAccess.Factories.Interfaces;
     using DataAccess.Interfaces;
     using Factories.Interfaces;
     using Models;
+    using System.Collections.Generic;
     // We are not sure if we want to save meterdata to text files going forward.
     public class MeterChargeSaver
     {
@@ -56,6 +56,7 @@ namespace MeterCharge
 
                     var meterReader = _meterReaderFactory.GetMeterReaderType(meter.MeterType);
                     var result = meterReader.GetReading(reading);
+
                     result.MeterName = meterId;
 
                     _storage.SaveConsumption(result);

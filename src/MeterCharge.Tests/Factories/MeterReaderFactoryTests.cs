@@ -4,12 +4,9 @@
 
 namespace MeterCharge.Tests.Factories
 {
-    using System;
-    using Infrastructure.Settings;
     using MeterCharge.Factories.Implementations;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Models.Enums;
-    using NSubstitute;
 
     /// <summary>
     /// Handles Meter reader factory tests
@@ -24,10 +21,6 @@ namespace MeterCharge.Tests.Factories
         /// </summary>
         private readonly MeterReaderFactory _sut;
 
-        /// <summary>
-        /// The app config
-        /// </summary>
-        private readonly IAppConfig _appConfig;
 
         #endregion
 
@@ -38,52 +31,18 @@ namespace MeterCharge.Tests.Factories
         /// </summary>
         public MeterReaderFactoryTests()
         {
-            _appConfig = Substitute.For<IAppConfig>();
-            _sut = new MeterReaderFactory(_appConfig);
+            _sut = new MeterReaderFactory();
         }
 
         #endregion
 
         #region Public methods
 
-        [TestMethod]
-        public void GetMeterReaderType_AssemblyNameIsEmpty_ThrowsException()
-        {
-            //Arrange
-            _appConfig.Get<string>("Petrol")
-                .Returns("");
-
-            //Assert & Act
-            Assert.ThrowsException<ArgumentNullException>(() =>
-                _sut.GetMeterReaderType(MeterType.Electricity));
-
-        }
-
-
-        [TestMethod]
-        public void GetMeterReaderType_InvalidAssemblyName_ThrowsException()
-        {
-            //Arrange
-
-            _appConfig.Get<string>("Electricity")
-                .Returns("MeterCharge.Implementations.Petrol, MeterCharge");
-
-
-            //Assert & Act
-            Assert.ThrowsException<ArgumentNullException>(() =>
-                _sut.GetMeterReaderType(MeterType.Electricity));
-
-        }
-
 
         [TestMethod]
         public void GetMeterReaderType_Returns_Electricity()
         {
-            //Arrange
-            _appConfig.Get<string>("Electricity")
-                .Returns("MeterCharge.Implementations.Electricity, MeterCharge");
-
-            //Act
+            // Arrange & Act 
             var meterReaderType = _sut.GetMeterReaderType(MeterType.Electricity);
 
             //Assert
@@ -94,11 +53,7 @@ namespace MeterCharge.Tests.Factories
         [TestMethod]
         public void GetMeterReaderType_Returns_Water()
         {
-            //Arrange
-            _appConfig.Get<string>("Water")
-                .Returns("MeterCharge.Implementations.Water, MeterCharge");
-
-            //Act
+            //Arrange & Act
             var meterReaderType = _sut.GetMeterReaderType(MeterType.Water);
 
             //Assert
@@ -109,11 +64,7 @@ namespace MeterCharge.Tests.Factories
         [TestMethod]
         public void GetMeterReaderType_Returns_Heating()
         {
-            //Arrange
-            _appConfig.Get<string>("Heating")
-                .Returns("MeterCharge.Implementations.Heating, MeterCharge");
-
-            //Act
+            //Arrange & Act
             var meterReaderType = _sut.GetMeterReaderType(MeterType.Heating);
 
             //Assert
