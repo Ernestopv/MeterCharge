@@ -63,8 +63,7 @@ Otherwise will store the data to a file for each meter;
 
 
 Also with the implementation of the factory pattern the "if" statements have been reduced from the principal class (MeterChargeSaver.cs),
-the keyValue pairs are being configured in the app.config, so when the "MeterType.Electricity" is set as an identifier 
-the  Electricity class is going to be instanciated to calculate the electricity consumption, 
+when the "MeterType.Electricity" is set as an identifier the  Electricity class is going to be instanciated to calculate the electricity consumption, 
 the same applies to water("MeterType.Water") and heating("MeterType.Heating").
 
 ![image](https://user-images.githubusercontent.com/24325283/175838834-cc789594-65ea-41d1-b63f-15a2f783a5b4.png)
@@ -76,7 +75,7 @@ the same applies to water("MeterType.Water") and heating("MeterType.Heating").
  ![image](https://user-images.githubusercontent.com/24325283/175839829-74987618-c5a1-43a5-8190-d85c8de3294c.png)
 
  
-All configurations like connectionString, enableDb and keyValues for the factory design are being handled on app.Config 
+The configuration like connectionString, is being handled on app.Config 
 from the core Project (MeterCharge).
 
 ![image](https://user-images.githubusercontent.com/24325283/175841056-87816472-2ce6-46cc-acca-a54cb7ee7c94.png)
